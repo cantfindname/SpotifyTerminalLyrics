@@ -1,4 +1,3 @@
-from ast import IsNot
 import time
 from bs4 import BeautifulSoup
 import requests
