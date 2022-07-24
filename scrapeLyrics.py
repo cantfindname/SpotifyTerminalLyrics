@@ -1,5 +1,4 @@
 from ast import IsNot
-from codecs import escape_encode
 import time
 from bs4 import BeautifulSoup
 import requests
@@ -8,7 +7,6 @@ import tekore as tk
 import unidecode
 import os
 
-# SPOTIFY_ACCESS_TOKEN = 'BQBy_jco2WKqTtufDKmKsBpQYsCbwNbXbXqipI_Hr_QiqRYjsTh2uZ5wRW_rIfM6W3RqVTtTQOWtGsfCq6jGIgg0C27TVMFSl5M71ixtNbnvEg_qAsplR0M7fkYsnwzlc9U8T1NI2He9hJ337au2VQkbtMOnt_Rh8quX1gmLfxHK4aOtyxSRwRa23_BHWAE'
 
 # Comment out codes in getCurrentInfo() and copy and paste the following code into the function
 # Run the program, accept the pop window and copy and paste the redirect link in command window
@@ -97,6 +95,10 @@ def standardizeString(s,type):
 
 # Directly calls Spotify API to receive and parse the JSON object into song name and artist name
 # Extremely low rate limit
+
+# This is needed if directly using Spotify API
+# SPOTIFY_ACCESS_TOKEN = ''
+
 '''
 def getCurrentTrack(token):
     currentTrack = requests.get(
@@ -134,7 +136,6 @@ def ScrapeLyrics(url):
 
     source = requests.get(url).text
 
-
     soup = BeautifulSoup(source, 'html.parser')
 
     # print(soup.encode("utf-8"))
@@ -147,8 +148,7 @@ def ScrapeLyrics(url):
     except:
         print('Cannot find lyrics for this song')
 
-
-
+        
 def main():
 
     currentSong = getCurrentInfo('')
@@ -157,7 +157,6 @@ def main():
         currentSong = getCurrentInfo(currentSong)
         # input('Press ENTER to exit') 
         time.sleep(1)
-
 
 if __name__ == '__main__':
     main()
